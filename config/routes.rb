@@ -15,7 +15,7 @@ PublicApi::Application.routes.draw do
   #   resources :products
 
   namespace :api do
-      resources :news_item
+    resources :kindles, format: :json
   end
 
   # Example resource route with options:

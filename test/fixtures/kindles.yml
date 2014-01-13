@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  inventory_id: MyString
+  status: MyText
+
+two:
+  inventory_id: MyString
+  status: MyText
