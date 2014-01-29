@@ -6,6 +6,9 @@ gem 'rails', '4.0.0'
 # use postgress
 gem 'pg'
 
+gem 'rack-cors',
+  :require => 'rack/cors'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
