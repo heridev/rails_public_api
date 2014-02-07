@@ -1,4 +1,4 @@
-class Api::KindlesController < ApplicationController
+class Api::KindlesController < Api::AuthController
   respond_to :json
   PER_PAGE_RECORDS = 9
 

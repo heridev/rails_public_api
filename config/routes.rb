@@ -16,6 +16,12 @@ PublicApi::Application.routes.draw do
 
   namespace :api do
     resources :kindles, format: :json
+    resources :sessions, only: [], format: :json do
+      collection do
+        get 'create'
+        get 'destroy'
+      end
+    end
   end
 
   # Example resource route with options:
