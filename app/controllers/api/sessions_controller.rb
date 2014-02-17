@@ -6,12 +6,12 @@ class Api::SessionsController < ApplicationController
     access_token = params[:access_token]
     is_google_client_present? client_id
     token_status = AuthTokenService.verify_token(access_token, client_id)
-    user_info = AuthUserService.create(access_token, token_status)
+    user_info = AuthUserService.create(access_token) if token_status
 
-    if user_info['errors'].nil?
+    if user_info && user_info['errors'].nil?
       render status: :ok, json: user_info
     else
-      render status: :unprocessable_entity, json: user_info['errors']
+      render status: :unprocessable_entity, json: user_info
     end
   end
 
