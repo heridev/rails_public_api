@@ -11,21 +11,28 @@ class Api::KindleRequestsController < Api::AuthController
   def index
     kindles_paginated = KindleRequest.order('id').page(params[:page]).per(PER_PAGE_RECORDS)
     json_response = {
-      models: kindles_paginated,
+      models: decorate_kindle_requests(kindles_paginated),
       current_page: params[:page].to_i,
       perPage: PER_PAGE_RECORDS,
       total_pages: kindles_paginated.num_pages
     }
-    respond_with json_response
+    render json: json_response
+  end
+
+  def decorate_kindle_requests(kindle_requests)
+    kin_requests_decorated = KindleRequestDecorator.decorate_collection(kindle_requests)
+    ActiveModel::ArraySerializer.new(kin_requests_decorated).as_json
   end
 
   def create
     kindle = current_user.kindle_requests.create(kindle_request_params)
-    respond_with kindle, location: nil
+    decorated_kindle = KindleRequestDecorator.decorate(kindle)
+    respond_with decorated_kindle, location: nil
   end
 
   def show
-    respond_with current_user.kindle_requests.find(params[:id])
+    kindle = KindleRequest.find(params[:id])
+    respond_with KindleRequestDecorator.decorate(kindle), root: false
   end
 
   def update

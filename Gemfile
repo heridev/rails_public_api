@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.2'
 
 # use postgress
 gem 'pg'
@@ -10,6 +10,8 @@ gem 'rack-cors',
   :require => 'rack/cors'
 
 gem "cancan"
+
+gem "active_model_serializers"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -24,6 +26,8 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # add gem to implement pagination
 gem 'kaminari'
+
+gem 'draper'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
