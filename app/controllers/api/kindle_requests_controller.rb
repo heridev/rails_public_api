@@ -36,11 +36,11 @@ class Api::KindleRequestsController < Api::AuthController
   end
 
   def update
-    respond_with current_user.kindle_requests.update(params[:id], kindle_params)
+    respond_with KindleRequest.update(params[:id], kindle_params)
   end
 
   def destroy
-    respond_with current_user.kindle_requests.destroy(params[:id])
+    respond_with KindleRequest.destroy(params[:id])
   end
 
   private
