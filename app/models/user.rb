@@ -1,5 +1,13 @@
 class User < ActiveRecord::Base
 
+  # User::Roles
+  # The available roles
+  Roles = [ :admin , :requester ]
+
+  def is?( requested_role )
+    self.role == requested_role.to_s
+  end
+
   def self.find_or_create(user_details, token)
     email = user_details['email']
 

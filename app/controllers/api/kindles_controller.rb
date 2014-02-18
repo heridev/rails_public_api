@@ -1,5 +1,9 @@
 class Api::KindlesController < Api::AuthController
+
+  load_and_authorize_resource
+
   respond_to :json
+
   PER_PAGE_RECORDS = 9
 
   skip_before_filter :verify_authenticity_token

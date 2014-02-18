@@ -9,6 +9,8 @@ gem 'pg'
 gem 'rack-cors',
   :require => 'rack/cors'
 
+gem "cancan"
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
