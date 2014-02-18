@@ -9,7 +9,7 @@ class Ability
       can :manage, :all
     end
     if user.is? :requester
-      #can :create, KindleRequest
+      can :create, KindleRequest
     end
   end
 end

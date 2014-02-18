@@ -5,7 +5,8 @@ class AuthUserService
 
   def self.create(user_token)
     user_info = HttpRequestService.new(USER_INFO_URL).create_request(user_token)
-    user = User.find_or_create(user_info, user_token) if is_valid_email_domain? user_info['email']
+    #user = User.find_or_create(user_info, user_token) if is_valid_email_domain? user_info['email']
+    user = User.find_or_create(user_info, user_token)
     user
   end
 

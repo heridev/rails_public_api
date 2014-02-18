@@ -16,6 +16,7 @@ PublicApi::Application.routes.draw do
 
   namespace :api do
     resources :kindles, format: :json
+    resources :kindle_requests, format: :json
     resources :sessions, only: [], format: :json do
       collection do
         get 'create'

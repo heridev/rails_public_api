@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+  has_many :kindle_requests
+
   # User::Roles
   # The available roles
   Roles = [ :admin , :requester ]
