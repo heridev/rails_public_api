@@ -1,3 +1,8 @@
 class KindleRequestSerializer < ActiveModel::Serializer
-  attributes :id, :created_at, :user_name, :kindle_id, :status
+  attributes :id,
+             :created_at,
+             :user_name,
+             :kindle_id,
+             :status,
+             :amount_day
 end

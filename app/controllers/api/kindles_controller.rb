@@ -36,6 +36,10 @@ class Api::KindlesController < Api::AuthController
     respond_with Kindle.destroy(params[:id])
   end
 
+  def available
+    respond_with Kindle.available.pluck(:id, :inventory_id), root: false
+  end
+
   private
 
   def kindle_params

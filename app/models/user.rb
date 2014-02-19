@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
         name: user_details['name'],
         picture: user_details['picture'],
         google_id: user_details['id'],
+        role: 'requester',
         token: token
       })
     end

@@ -9,14 +9,17 @@ class Api::KindleRequestsController < Api::AuthController
   skip_before_filter :verify_authenticity_token
 
   def index
-    kindles_paginated = KindleRequest.order('id').page(params[:page]).per(PER_PAGE_RECORDS)
+    type = (params[:type] && params[:type].empty?) ? 'in_progress' : params[:type]
+    kindles_paginated = KindleRequest.created_status_order(type)
+                                     .page(params[:page])
+                                     .per(PER_PAGE_RECORDS)
     json_response = {
       models: decorate_kindle_requests(kindles_paginated),
       current_page: params[:page].to_i,
       perPage: PER_PAGE_RECORDS,
       total_pages: kindles_paginated.num_pages
     }
-    render json: json_response
+    respond_with json_response
   end
 
   def decorate_kindle_requests(kindle_requests)
@@ -36,16 +39,20 @@ class Api::KindleRequestsController < Api::AuthController
   end
 
   def update
-    respond_with KindleRequest.update(params[:id], kindle_params)
+    respond_with KindleRequest.update(params[:id], kindle_request_params)
   end
 
   def destroy
     respond_with KindleRequest.destroy(params[:id])
   end
 
+  def return_kindle
+    respond_with KindleRequest.find(params[:id]).return_kindle
+  end
+
   private
 
   def kindle_request_params
-    params.require(:kindle_request).permit(:status, :user_id, :kindle_id)
+    params.require(:kindle_request).permit(:status, :user_id, :kindle_id, :amount_day)
   end
 end
