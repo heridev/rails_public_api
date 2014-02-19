@@ -22,11 +22,6 @@ class Api::KindleRequestsController < Api::AuthController
     respond_with json_response
   end
 
-  def decorate_kindle_requests(kindle_requests)
-    kin_requests_decorated = KindleRequestDecorator.decorate_collection(kindle_requests)
-    ActiveModel::ArraySerializer.new(kin_requests_decorated).as_json
-  end
-
   def create
     kindle = current_user.kindle_requests.create(kindle_request_params)
     decorated_kindle = KindleRequestDecorator.decorate(kindle)
@@ -52,7 +47,13 @@ class Api::KindleRequestsController < Api::AuthController
 
   private
 
+  def decorate_kindle_requests(kindle_requests)
+    kin_requests_decorated = KindleRequestDecorator.decorate_collection(kindle_requests)
+    ActiveModel::ArraySerializer.new(kin_requests_decorated).as_json
+  end
+
   def kindle_request_params
     params.require(:kindle_request).permit(:status, :user_id, :kindle_id, :amount_day)
   end
 end
+

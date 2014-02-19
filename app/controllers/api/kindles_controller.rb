@@ -11,7 +11,7 @@ class Api::KindlesController < Api::AuthController
   def index
     kindles_paginated = Kindle.order('id').page(params[:page]).per(PER_PAGE_RECORDS)
     json_response = {
-      models: kindles_paginated,
+      models: decorate_kindles(kindles_paginated),
       current_page: params[:page].to_i,
       perPage: PER_PAGE_RECORDS,
       total_pages: kindles_paginated.num_pages
@@ -21,11 +21,13 @@ class Api::KindlesController < Api::AuthController
 
   def create
     kindle = Kindle.create(kindle_params)
-    respond_with kindle, location: nil
+    decorated_kindle = KindleDecorator.decorate(kindle)
+    respond_with decorated_kindle, location: nil
   end
 
   def show
-    respond_with Kindle.find(params[:id])
+    kindle = Kindle.find(params[:id])
+    respond_with KindleDecorator.decorate(kindle), root: false
   end
 
   def update
@@ -42,7 +44,12 @@ class Api::KindlesController < Api::AuthController
 
   private
 
+  def decorate_kindles(kindles)
+    kindles_decorated = KindleDecorator.decorate_collection(kindles)
+    ActiveModel::ArraySerializer.new(kindles_decorated).as_json
+  end
+
   def kindle_params
-    params.require(:kindle).permit(:inventory_id, :status)
+    params.require(:kindle).permit(:inventory_id)
   end
 end
