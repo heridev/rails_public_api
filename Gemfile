@@ -11,6 +11,8 @@ gem 'rack-cors',
 
 gem "cancan"
 
+gem 'haml'
+
 gem "active_model_serializers"
 
 # Use SCSS for stylesheets
