@@ -10,7 +10,7 @@ module PublicApi
   class Application < Rails::Application
     config.middleware.use Rack::Cors do
       allow do
-        origins 'localhost', 'http://htmlapiclient.herokuapp.com'
+        origins 'localhost', 'http://test.heridev.com.mx', 'http://kindles.herokuapp.com'
         resource '*', :headers => :any, :methods => [:get, :post, :delete, :put]
       end
     end
