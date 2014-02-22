@@ -25,7 +25,7 @@ class Api::KindleRequestsController < Api::AuthController
   def create
     kindle = current_user.kindle_requests.create(kindle_request_params)
     decorated_kindle = KindleRequestDecorator.decorate(kindle)
-    Notifier.create_request(current_user).deliver
+    Notifier.create_request(current_user).deliver if kindle.errors.empty?
     respond_with decorated_kindle, location: nil
   end
 
