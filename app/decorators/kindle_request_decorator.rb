@@ -6,6 +6,6 @@ class KindleRequestDecorator < Draper::Decorator
   end
 
   def kindle_inventory
-    object.kindle.inventory_id
+    object.kindle.inventory_id if object.kindle
   end
 end
