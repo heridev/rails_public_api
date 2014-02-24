@@ -4,5 +4,6 @@ class KindleRequestSerializer < ActiveModel::Serializer
              :user_name,
              :kindle_id,
              :status,
-             :amount_day
+             :amount_day,
+             :kindle_inventory
 end

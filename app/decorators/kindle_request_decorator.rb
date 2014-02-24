@@ -4,4 +4,8 @@ class KindleRequestDecorator < Draper::Decorator
   def user_name
     object.user.name
   end
+
+  def kindle_inventory
+    object.kindle.inventory_id
+  end
 end
