@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
 
   has_many :kindle_requests
 
+  scope :expired_requests, -> { joins(:kindle_requests)
+                                .where('delivery_date > ?', Date.today + 14.days ) }
+
   # User::Roles
   # The available roles
   Roles = [ :admin , :requester ]

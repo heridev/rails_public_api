@@ -10,5 +10,14 @@ class Notifier < ActionMailer::Base
       end
     end
   end
+
+  def expired_requests users
+    admins = User.where(role: 'admin').pluck(:email)
+    admins.each do |admin|
+      mail(to: admin, subject: 'Expired requests') do |format|
+        format.html { render 'notifier/expired_request', locals: { users: users }}
+      end
+    end
+  end
 end
 

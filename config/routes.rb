@@ -8,6 +8,12 @@ PublicApi::Application.routes.draw do
       end
     end
 
+    resources :job_services, only: [], format: :json do
+      collection do
+        get 'check_expired_kindle_requests'
+      end
+    end
+
     resources :kindles, format: :json do
       collection do
         get 'available'
