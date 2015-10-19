@@ -12,7 +12,7 @@ class AuthUserService
   private
 
   def self.is_valid_email_domain? user_email
-    user_email.split('@').last == 'crowdint.com'
+    user_email.split('@').last == 'magmalabs.io'
   end
 end
 
