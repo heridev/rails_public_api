@@ -16,7 +16,7 @@ gem 'haml'
 gem "active_model_serializers"
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 4.0.1'
 
 gem 'pry'
 
@@ -24,7 +24,7 @@ gem 'pry'
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0.1'
 
 # add gem to implement pagination
 gem 'kaminari'
