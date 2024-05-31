@@ -27,7 +27,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # add gem to implement pagination
-gem 'kaminari'
+gem 'kaminari', '>= 0.16.2'
 
 gem 'draper'
 
