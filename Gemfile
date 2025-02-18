@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.2'
+gem 'rails', '7.0.0'
 
 # use postgress
 gem 'pg'
@@ -16,7 +16,7 @@ gem 'haml'
 gem "active_model_serializers"
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.0'
+gem 'sass-rails', '~> 6.0.0'
 
 gem 'pry'
 
@@ -27,7 +27,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # add gem to implement pagination
-gem 'kaminari'
+gem 'kaminari', '>= 1.0.0'
 
 gem 'draper'
 
@@ -38,7 +38,7 @@ gem 'draper'
 gem 'jquery-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+gem 'turbolinks', '>= 5.0.0'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
